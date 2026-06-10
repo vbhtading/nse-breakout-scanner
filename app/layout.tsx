@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "HighBreak | NSE Daily + Weekly High Breakout Scanner",
   description: "Scans a curated list of NSE stocks for price breakouts above yesterday high and above 5-day high, combined with elevated volume. Shows common stocks that satisfy both conditions. Powered by Yahoo Finance. Ready for Vercel.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
