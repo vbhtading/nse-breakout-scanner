@@ -1,0 +1,123 @@
+// Exact universe provided by user (NSE symbols without .NS suffix)
+export interface StockMeta {
+  symbol: string;   // e.g. "HINDZINC"
+  name: string;
+}
+
+// User's curated list - ETERNAL first as specified
+const RAW_TICKERS = [
+  "ETERNAL",
+  "HINDZINC",
+  "IOC",
+  "BHEL",
+  "BPCL",
+  "GMRAIRPORT",
+  "JSWENERGY",
+  "AMBUJACEM",
+  "ASHOKLEY",
+  "HINDPETRO",
+  "SUZLON",
+  "NYKAA",
+  "SWIGGY",
+  "VMM",
+  "HINDCOPPER",
+  "KALYANKJIL",
+  "IREDA",
+  "POONAWALLA",
+  "DELHIVERY",
+  "TATAINVEST",
+  "HEXT",
+  "SJVN",
+  "HFCL",
+  "MRPL",
+  "CESC",
+  "ACMESOLAR",
+  "IIFL",
+  "ANANTRAJ",
+  "PFOCUS",
+  "BELRISE",
+  "CGCL",
+  "SARDAEN",
+  "CUPID",
+  "INOXWIND",
+  "FSL",
+  "ZYDUSWELL",
+  "BIKAJI",
+  "COHANCE",
+  "MINDACORP",
+  "APOLLO",
+  "CHOICEIN",
+  "SCI",
+  "ENGINERSIN",
+  "LTFOODS",
+  "PARADEEP",
+  "APTUS",
+  "INDIACEM",
+  "METROPOLIS",
+  "VIYASH",
+  "BLS",
+  "TI",
+  "FINPIPE",
+  "SHILPAMED",
+  "DIACABS",
+  "SANDUMA",
+  "EDELWEISS",
+  "LLOYDSENGG",
+  "HEG",
+  "SBFC",
+  "NAZARA",
+  "MMTC",
+  "LLOYDSENT",
+  "RAILTEL",
+  "BLACKBUCK",
+  "TARIL",
+  "JAYNECOIND",
+  "THYROCARE",
+  "V2RETAIL",
+  "STARCEMENT",
+  "TIPSMUSIC",
+  "ASKAUTOLTD",
+  "KRBL",
+  "KPIGREEN",
+  "JSLL",
+  "SKYGOLD",
+  "PNGJL",
+  "GPPL",
+  "SFL",
+  "GAEL",
+  "BORORENEW",
+  "GNFC",
+  "GOKULAGRO",
+  "RCF",
+  "PRICOLLTD",
+  "RAIN",
+  "ASHAPURMIN",
+  "LATENTVIEW",
+  "SENCO",
+  "TVSSCS",
+  "PURVA",
+  "SWSOLAR",
+  "WEBELSOLAR",
+  "GREAVESCOT",
+  "REFEX",
+  "SUNTECK",
+  "TARC",
+  "ZAGGLE",
+  "AWFIS",
+  "TATACAP",
+];
+
+export const NSE_UNIVERSE: StockMeta[] = RAW_TICKERS.map((symbol) => ({
+  symbol,
+  name: symbol, // Will be enriched by Yahoo quote.shortName on scan
+}));
+
+// Helper to get full Yahoo symbol
+export function toYahooSymbol(sym: string): string {
+  return sym.endsWith(".NS") ? sym : `${sym}.NS`;
+}
+
+// For display (strip suffix if present)
+export function shortSymbol(sym: string): string {
+  return sym.replace(".NS", "");
+}
